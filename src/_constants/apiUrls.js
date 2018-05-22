@@ -3,7 +3,7 @@ const apiVersion = "v2";
 const apiName = "Verification";
 let localhostname
 
-const baseUrl = `${hostname}/api/${Verification}`;
+const baseUrl = `${hostname}/api/${apiName}`;
 export const apiUrls = {
   createProfile: `${baseUrl}/${apiVersion}/Create`,
   deleteProfile: `${baseUrl}/Delete`,

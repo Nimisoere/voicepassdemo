@@ -15,7 +15,6 @@ body {
   font-size: 16px;
   font-family: $site-font;
   position: relative;
-  background-color: #f6f6f6;
   min-height: 100%;
   padding-bottom: 100px;
 }
@@ -35,4 +34,19 @@ a {
 }
 .btn {
   overflow: hidden;
+}
+
+/* Ripple effect */
+.ripple {
+  background-position: center;
+  transition: background 1.5s;
+  &:hover {
+    background: #fcfcfc radial-gradient(circle, transparent 1%, #fcfcfc 1%)
+      center/15000%;
+  }
+  &:active {
+    background-color: #eee;
+    background-size: 100%;
+    transition: background 0s;
+  }
 }

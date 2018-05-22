@@ -1,56 +1,13 @@
 @import "../variables/colors";
 
-.button-style {
-  border-radius: 3px;
-  padding: 7px 16px 8px;
-  display: inline-block;
-  background: #fff;
-  text-decoration: none;
-  vertical-align: top;
-  cursor: pointer;
-  color: #666;
-  border: none;
-  outline: none;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  font-size: 14px;
-  @include transition(0.3s);
-}
-
-.red-button {
-  background: $brand-color-1;
-  color: #fff;
+.orange-submit{
+  background-color: #E77300 !important;
+  border-color: #E77300 !important;
+  padding: .8rem;
+  color: #FFF;
+  display: block;
+  width: 100%;
   font-weight: 500;
-  padding: .7rem;
-  font-size: 0.9rem;
-  box-shadow: none;
+  font-size: 1.1rem;
   border-radius: 0;
-  text-align: left;
-  @include transition(0.3s);
-  .material-icons{
-    vertical-align: middle;
-    color: #fff;
-    float: right;
-  }
-}
-
-.red-outline-button {
-  border-color: $brand-color-1;
-  color: $brand-color-1;
-  background: #fff;
-  padding: .7rem;
-  font-weight: 500;
-  font-size: .9rem;
-  box-shadow: none;
-  border-radius: 0;
-  text-align: left;
-  @include transition(0.3s);
-  &:hover .material-icons{
-    color: #FFF;
-  }
-  .material-icons{
-    vertical-align: middle;
-    float: right;
-    color: $brand-color-1;
-  }
 }
