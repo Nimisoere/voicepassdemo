@@ -9,7 +9,7 @@ export const apiUrls = {
   deleteProfile: `${baseUrl}/Delete`,
   enrollUser: `${baseUrl}/${apiVersion}/Enroll"`,
   getEnrollmentStatus: `${baseUrl}/GetEnrollmentStatus`,
-  reset: `${baseUrl}/Reset`,
-  getVerificationStatus: `${baseUrl}/GetVerificationStatus`,
-  verify: `${baseUrl}/${apiVersion}/Verify`
+  resetProfile: `${baseUrl}/Reset`,
+  verifyTransaction: `${baseUrl}/GetVerificationStatus`,
+  performTransaction: `${baseUrl}/${apiVersion}/Verify`
 };

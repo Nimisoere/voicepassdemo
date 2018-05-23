@@ -3,8 +3,8 @@ import { transactionService } from "../_services";
 import { alertActions } from "./";
 import { history } from "../_helpers";
 
-export const resetProfileActions = {
-    resetProfile
+export const transactionActions = {
+  performTransaction
 };
 
 function performTransaction(payload) {

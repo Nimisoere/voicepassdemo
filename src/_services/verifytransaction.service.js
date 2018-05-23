@@ -1,10 +1,10 @@
 import { apiUrls } from "../_constants";
 
-export const enrollmentStatusService = {
-    enrollmentStatus
+export const verifyTransactionService = {
+    verifyTransaction
 };
 
-function enrollmentStatus(apiModel) {
+function verifyTransaction(apiModel) {
   const requestOptions = {
     method: "POST",
     headers: {
@@ -13,7 +13,7 @@ function enrollmentStatus(apiModel) {
     body: JSON.stringify(apiModel)
   };
 
-  return fetch(apiUrls.getEnrollmentStatus, requestOptions).then(
+  return fetch(apiUrls.verifyTransaction, requestOptions).then(
     handleResponse
   );
 }
