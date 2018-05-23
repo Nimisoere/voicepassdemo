@@ -9,7 +9,7 @@ export const enrollment = (state = initialState, action) => {
         submitting: true,
         payload: action.payload
       };
-    case enrollmentConstants.ENROLLMENT_REQUEST:
+    case enrollmentConstants.ENROLLMENT_SUCCESS:
       return {
         success: true,
         response: action.response

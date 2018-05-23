@@ -1,4 +1,3 @@
-export * from "./apiUrls";
 export * from "./create.service";
 export * from "./delete.service";
 export * from "./enroll.service";

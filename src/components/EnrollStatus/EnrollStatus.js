@@ -1,17 +1,20 @@
 import React from "react";
-import { Alert, Button, Row, Container, Col } from "reactstrap";
+import { Alert } from "reactstrap";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { enrollmentStatusActions, alertActions } from "../../_actions";
 import Formsy from "formsy-react";
 
-import { Spinner, FormInput, VPButton } from "../_Shared";
+import { FormInput, VPButton } from "../_Shared";
 
 class EnrollStatusForm extends React.Component {
   state = {
     canSubmit: false
   };
 
-  /*   componentWillUnmount() {
+  componentWillUnmount() {
     this.props.clearAlerts();
-  } */
+  }
 
   disableButton = () => {
     this.setState({ ...this.state, canSubmit: false });
@@ -21,38 +24,41 @@ class EnrollStatusForm extends React.Component {
     this.setState({ ...this.state, canSubmit: true });
   };
 
-  /*  handleSubmit = data => {
-    this.props.recharge(data);
-  }; */
-
   resetForm = () => {
-    this.setState({
-      ...this.state,
-      canSubmit: false
+    this.refs.enrollmentStatusForm.reset();
+  };
+
+  componentWillReceiveProps(nextProps) {
+    this.setState((previousState, nextProps) => {
+      if (nextProps.success) {
+        this.resetForm();
+        return {
+          ...previousState,
+          submitSuccess: true
+        };
+      }
     });
-    //this.props.resetForm();
-    //this.refs.rechargeForm.reset();
+  }
+
+  handleSubmit = data => {
+    const { bvn, ...actionData } = data;
+    this.props.submit(actionData);
   };
 
   render() {
     const { canSubmit } = this.state;
+    const { alert, submitting } = this.props;
 
     return (
       <Formsy
-        ref="rechargeForm"
-        onValidSubmit={this.handleSbmit}
+        ref="enrollmentStatusForm"
+        onValidSubmit={this.handleSubmit}
         onValid={this.enableButton}
         onInvalid={this.disableButton}
         className=""
       >
         {alert && alert.message ? (
-          <Alert
-            className={`${alert.type}`}
-            isOpen={this.state.visible}
-            toggle={this.onDismiss}
-          >
-            {alert.message}
-          </Alert>
+          <Alert className={`${alert.type}`}>{alert.message}</Alert>
         ) : (
           ""
         )}
@@ -89,23 +95,36 @@ class EnrollStatusForm extends React.Component {
           required
         />
 
-        <VPButton title="Get Enrollment Status" visible={true} canSubmit={true} />
+        <VPButton
+          title="Get Enrollment Status"
+          visible={true}
+          inProcess={submitting}
+          canSubmit={canSubmit}
+        />
       </Formsy>
     );
   }
 }
 
-/* const mapStateToProps = state => {
+const mapStateToProps = state => {
   const { alert } = state;
+  const { submitting, success, failed, response, error } = state.enrollmentStatus;
   return {
-    alert
+    alert,
+    submitting,
+    success,
+    failed,
+    response,
+    error
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    clearAlerts: bindActionCreators(alertActions.clear, dispatch)
+    clearAlerts: bindActionCreators(alertActions.clear, dispatch),
+    submit: bindActionCreators(enrollmentStatusActions.enrollmentStatus, dispatch)
   };
-}; */
+};
+const EnrollStatus = connect(mapStateToProps, mapDispatchToProps)(EnrollStatusForm);
 
-export { EnrollStatusForm as EnrollStatus };
+export { EnrollStatus };

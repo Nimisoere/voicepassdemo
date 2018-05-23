@@ -1,21 +1,15 @@
 import { apiUrls } from "../_constants";
 
 export const enrollmentStatusService = {
-    enrollmentStatus
+  enrollmentStatus
 };
 
 function enrollmentStatus(apiModel) {
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(apiModel)
-  };
-
-  return fetch(apiUrls.getEnrollmentStatus, requestOptions).then(
-    handleResponse
-  );
+  var url = new URL(apiUrls.getEnrollmentStatus),
+    params = { referenceId: apiModel.referenceId};
+  Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+  
+  return fetch(url).then(handleResponse);
 }
 
 function handleResponse(response) {

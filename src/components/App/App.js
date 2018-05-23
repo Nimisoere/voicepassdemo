@@ -2,8 +2,7 @@ import React from "react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { history } from "../../_helpers";
 
-//import { Seo } from "../Shared";
-//import { seoObject } from "../../_constants";
+import { seoObject } from "../../_constants";
 
 import { Header } from "../Header";
 import {HomePage} from "../HomePage";
@@ -14,26 +13,18 @@ import {Transaction} from "../Verify";
 import { VerifyTransaction } from "../VerifyTransaction";
 import { ResetProfile } from "../Reset";
 import {DeleteProfile} from "../DeleteProfile";
-import {NotFound} from "../_Shared";
+import {NotFound, Seo} from "../_Shared";
 
-/* import {Confirmation} from "../Confirmation";
-
-
-
-
-
-
-import {VerifyStatus} from "../VerifyStatus";
- */
+// import {Confirmation} from "../Confirmation";
 
 export const App = ({ user, loggedIn }) => (
   <Router history={history}>
     <div className="App">
-      {/*  <Seo
+      <Seo
         title={seoObject.base.title}
         description={seoObject.base.description}
         base={true}
-      /> */}
+      />
       <Header />
       <main>
          <Switch>
@@ -47,11 +38,7 @@ export const App = ({ user, loggedIn }) => (
           <Route path="/delete-profile" component={DeleteProfile} />
           <Route path="/404-not-found" component={NotFound} />
           <Redirect to="/404-not-found" /> 
-          {/* <Route path="/confirmation" component={Confirmation} />
-          
-          
-          
-          */}
+          {/* <Route path="/confirmation" component={Confirmation} /> */}
         </Switch> 
       </main>
     </div>

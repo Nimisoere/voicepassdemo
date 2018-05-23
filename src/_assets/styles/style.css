@@ -165,6 +165,10 @@ a:hover {
 .btn {
   overflow: hidden; }
 
+.alert {
+  margin-bottom: 0;
+  word-wrap: break-word; }
+
 /* Ripple effect */
 .ripple {
   background-position: center;

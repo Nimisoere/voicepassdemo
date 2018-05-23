@@ -2,9 +2,8 @@ import React from "react";
 import { Button } from "reactstrap";
 import { Spinner } from "../_Shared";
 
-export const VPButton = ({ visible, inProcess, type, canSubmit, title }) => (
+export const VPButton = ({  inProcess, type, canSubmit, title }) => (
   <div>
-    {visible ? (
       <Button
         block
         type={type || "submit"}
@@ -21,8 +20,6 @@ export const VPButton = ({ visible, inProcess, type, canSubmit, title }) => (
           </span>
         )}
       </Button>
-    ) : (
-      ""
-    )}
+  
   </div>
 );

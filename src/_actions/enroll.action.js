@@ -14,7 +14,8 @@ function enroll(payload) {
     enrollmentService.enroll(apiModel).then(
       response => {
         dispatch(success(response));
-        history.push("/confirmation");
+        dispatch(alertActions.success('Success'));
+        //history.push("/confirmation");
       },
       error => {
         dispatch(failure(error));

@@ -42,7 +42,7 @@ export const HomePage = () => (
       className="ripple list-group-item-action list-group-item"
       to="/perform-transaction"
     >
-       Perform Transaction
+      Perform Transaction
       <span className="float-right">
         <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
       </span>
@@ -52,7 +52,7 @@ export const HomePage = () => (
       className="ripple list-group-item-action list-group-item"
       to="/verify-transaction"
     >
-       Transaction Status
+      Transaction Status
       <span className="float-right">
         <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
       </span>
@@ -62,7 +62,7 @@ export const HomePage = () => (
       className="ripple list-group-item-action list-group-item"
       to="/reset-profile"
     >
-       Reset Profile
+      Reset Profile
       <span className="float-right">
         <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
       </span>
@@ -72,7 +72,7 @@ export const HomePage = () => (
       className="ripple list-group-item-action list-group-item"
       to="/delete-profile"
     >
-       Delete Profile
+      Delete Profile
       <span className="float-right">
         <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
       </span>

@@ -14,7 +14,8 @@ function performTransaction(payload) {
     transactionService.performTransaction(apiModel).then(
       response => {
         dispatch(success(response));
-        history.push("/confirmation");
+        dispatch(alertActions.success('Success'));
+        //history.push("/confirmation");
       },
       error => {
         dispatch(failure(error));

@@ -1,17 +1,20 @@
 import React from "react";
-import { Alert, Button, Row, Container, Col } from "reactstrap";
+import { Alert } from "reactstrap";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { transactionActions, alertActions } from "../../_actions";
 import Formsy from "formsy-react";
 
-import { Spinner, FormInput, VPButton } from "../_Shared";
+import { FormInput, VPButton } from "../_Shared";
 
 class TransactionForm extends React.Component {
   state = {
     canSubmit: false
   };
 
-  /*   componentWillUnmount() {
+  componentWillUnmount() {
     this.props.clearAlerts();
-  } */
+  }
 
   disableButton = () => {
     this.setState({ ...this.state, canSubmit: false });
@@ -21,26 +24,35 @@ class TransactionForm extends React.Component {
     this.setState({ ...this.state, canSubmit: true });
   };
 
-  /*  handleSubmit = data => {
-    this.props.recharge(data);
-  }; */
-
   resetForm = () => {
-    this.setState({
-      ...this.state,
-      canSubmit: false
+    this.refs.transactionForm.reset();
+  };
+
+  componentWillReceiveProps(nextProps) {
+    this.setState((previousState, nextProps) => {
+      if (nextProps.success) {
+        this.resetForm();
+        return {
+          ...previousState,
+          submitSuccess: true
+        };
+      }
     });
-    //this.props.resetForm();
-    //this.refs.rechargeForm.reset();
+  }
+
+  handleSubmit = data => {
+    const { amount, pin, ...actionData } = data;
+    this.props.submit(actionData);
   };
 
   render() {
     const { canSubmit } = this.state;
+    const { alert, submitting } = this.props;
 
     return (
       <Formsy
-        ref="rechargeForm"
-        onValidSubmit={this.handleSbmit}
+        ref="transactionForm"
+        onValidSubmit={this.handleSubmit}
         onValid={this.enableButton}
         onInvalid={this.disableButton}
         className=""
@@ -120,23 +132,36 @@ class TransactionForm extends React.Component {
           required
         />
 
-        <VPButton title="Perform Transaction" visible={true} canSubmit={true} />
+        <VPButton
+          title="Perform Transaction"
+          visible={true}
+          inProcess={submitting}
+          canSubmit={canSubmit}
+        />
       </Formsy>
     );
   }
 }
 
-/* const mapStateToProps = state => {
+const mapStateToProps = state => {
   const { alert } = state;
+  const { submitting, success, failed, response, error } = state.transaction;
   return {
-    alert
+    alert,
+    submitting,
+    success,
+    failed,
+    response,
+    error
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    clearAlerts: bindActionCreators(alertActions.clear, dispatch)
+    clearAlerts: bindActionCreators(alertActions.clear, dispatch),
+    submit: bindActionCreators(transactionActions.performTransaction, dispatch)
   };
-}; */
+};
+const Transaction = connect(mapStateToProps, mapDispatchToProps)(TransactionForm);
 
-export { TransactionForm as Transaction };
+export { Transaction };

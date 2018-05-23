@@ -4,7 +4,7 @@ import { alertActions } from "./";
 import { history } from "../_helpers";
 
 export const enrollmentStatusActions = {
-    enrollmentStatus
+  enrollmentStatus
 };
 
 function enrollmentStatus(payload) {
@@ -13,8 +13,10 @@ function enrollmentStatus(payload) {
     const apiModel = payload;
     enrollmentStatusService.enrollmentStatus(apiModel).then(
       response => {
+        console.log(response)
         dispatch(success(response));
-        history.push("/confirmation");
+        dispatch(alertActions.success(JSON.stringify(response)));
+        //history.push("/confirmation");
       },
       error => {
         dispatch(failure(error));
@@ -24,10 +26,16 @@ function enrollmentStatus(payload) {
   };
 
   function request(payload) {
-    return { type: enrollmentStatusConstants.ENROLLMENT_STATUS_REQUEST, payload };
+    return {
+      type: enrollmentStatusConstants.ENROLLMENT_STATUS_REQUEST,
+      payload
+    };
   }
   function success(response) {
-    return { type: enrollmentStatusConstants.ENROLLMENT_STATUS_SUCCESS, response };
+    return {
+      type: enrollmentStatusConstants.ENROLLMENT_STATUS_SUCCESS,
+      response
+    };
   }
   function failure(error) {
     return { type: enrollmentStatusConstants.ENROLLMENT_STATUS_FAILURE, error };
