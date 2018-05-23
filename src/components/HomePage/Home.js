@@ -16,7 +16,7 @@ export const HomePage = () => (
         <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
       </span>
     </NavLink>
-    
+
     <NavLink
       tag="a"
       className="ripple list-group-item-action list-group-item"
@@ -37,29 +37,45 @@ export const HomePage = () => (
         <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
       </span>
     </NavLink>
-    <ListGroupItem tag="a" className="ripple" href="#" action>
-    Perform Transaction
+    <NavLink
+      tag="a"
+      className="ripple list-group-item-action list-group-item"
+      to="/perform-transaction"
+    >
+       Perform Transaction
       <span className="float-right">
         <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
       </span>
-    </ListGroupItem>
-    <ListGroupItem tag="a" className="ripple" href="#" action>
-    Transaction Status
+    </NavLink>
+    <NavLink
+      tag="a"
+      className="ripple list-group-item-action list-group-item"
+      to="/verify-transaction"
+    >
+       Transaction Status
       <span className="float-right">
         <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
       </span>
-    </ListGroupItem>
-    <ListGroupItem tag="a" className="ripple" href="#" action>
-      Reset Profile
+    </NavLink>
+    <NavLink
+      tag="a"
+      className="ripple list-group-item-action list-group-item"
+      to="/reset-profile"
+    >
+       Reset Profile
       <span className="float-right">
         <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
       </span>
-    </ListGroupItem>
-    <ListGroupItem tag="a" className="ripple" href="#" action>
-      Delete Profile
+    </NavLink>
+    <NavLink
+      tag="a"
+      className="ripple list-group-item-action list-group-item"
+      to="/delete-profile"
+    >
+       Delete Profile
       <span className="float-right">
         <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
       </span>
-    </ListGroupItem>
+    </NavLink>
   </ListGroup>
 );

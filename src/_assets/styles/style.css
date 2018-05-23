@@ -22,8 +22,8 @@
  * Rotate
  */
 .orange-submit {
-  background-color: #E77300 !important;
-  border-color: #E77300 !important;
+  background-color: #70b0a8 !important;
+  border-color: #70b0a8 !important;
   padding: .8rem;
   color: #FFF;
   display: block;
@@ -65,7 +65,10 @@ a, a:active, a:hover, a:visited {
 
 .home-menu.list-group .list-group-item {
   border-radius: 0;
+  color: #70b0a8;
   padding: 1rem 1.5rem; }
+  .home-menu.list-group .list-group-item:hover {
+    border-left: 5px solid #70b0a8; }
 
 :root {
   --input-padding-x: 0.75rem;
@@ -74,6 +77,11 @@ a, a:active, a:hover, a:visited {
 .form-label-group {
   position: relative;
   margin-bottom: 0; }
+  .form-label-group .invalid-feedback {
+    background: #dc3545;
+    color: #fff;
+    padding: 2px 10px;
+    margin: 0; }
   .form-label-group > input,
   .form-label-group > label {
     padding: var(--input-padding-y) var(--input-padding-x); }
@@ -94,15 +102,12 @@ a, a:active, a:hover, a:visited {
     border-radius: 3px;
     border-radius: 0;
     border-left: none;
+    border-top: none;
     border-right: none; }
-    .form-label-group input.form-control.is-invalid {
-      border-bottom: #dc3545 2px solid; }
-      .form-label-group input.form-control.is-invalid:focus {
-        border-color: #dc3545;
-        border-bottom: #dc3545 2px solid; }
     .form-label-group input.form-control:focus, .form-label-group input.form-control:active {
       outline: none;
-      border: thin solid #DDD;
+      border: none;
+      border-bottom: 3px solid #ddd;
       outline: 0;
       -webkit-box-shadow: none;
       box-shadow: none; }
@@ -115,7 +120,7 @@ a, a:active, a:hover, a:visited {
         padding-top: calc(var(--input-padding-y) / 3);
         padding-bottom: calc(var(--input-padding-y) / 3);
         font-size: 12px;
-        color: #CCC; }
+        color: #ccc; }
 
 @font-face {
   font-family: "CircularStd-Book";
@@ -133,7 +138,8 @@ a, a:active, a:hover, a:visited {
 
 html {
   height: 100%;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background: #EEE; }
 
 *,
 *:before,
@@ -169,6 +175,13 @@ a:hover {
     background-color: #eee;
     background-size: 100%;
     transition: background 0s; }
+
+.notfound-wrapper {
+  display: flex;
+  align-items: center; }
+  .notfound-wrapper h3 {
+    font-size: 6rem;
+    color: #ccc; }
 
 .main-nav {
   background: #000;

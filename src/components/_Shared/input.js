@@ -55,7 +55,7 @@ class FormInput extends React.Component {
           placeholder={title}
         />
         <label htmlFor={name}>{title}</label>
-        {hasError ? <FormFeedback>{errorMessage}</FormFeedback> : ""}
+        {hasError && errorMessage ? <FormFeedback>{errorMessage}</FormFeedback> : ""}
         {showRequired() ? <FormFeedback>Required</FormFeedback> : ""}
         {showLoader ? <Spinner /> : ""}
       </div>

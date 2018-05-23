@@ -3,6 +3,7 @@
 html {
   height: 100%;
   box-sizing: border-box;
+  background: #EEE;
 }
 
 *,
@@ -50,3 +51,13 @@ a {
     transition: background 0s;
   }
 }
+
+.notfound-wrapper {
+  display: flex;
+  align-items: center;
+  h3 {
+    font-size: 6rem;
+    color: #ccc;
+  }
+}
+

@@ -4,7 +4,7 @@ import Formsy from "formsy-react";
 
 import { Spinner, FormInput, VPButton } from "../_Shared";
 
-class TransactionForm extends React.Component {
+class DeleteProfileForm extends React.Component {
   state = {
     canSubmit: false
   };
@@ -72,55 +72,8 @@ class TransactionForm extends React.Component {
           type="text"
           required
         />
-        <FormInput
-          name="transactionId"
-          title="Transaction ID"
-          validating={false}
-          validations={{
-            isNumeric: true,
-            maxLength: 15
-          }}
-          validationErrors={{
-            isNumeric: "You have to type valid number",
-            maxLength: "You can not type in more than 15 characters"
-          }}
-          type="text"
-          required
-        />
 
-        <FormInput
-          name="amount"
-          title="Amount"
-          validating={false}
-          validations={{
-            isNumeric: true,
-            maxLength: 15
-          }}
-          validationErrors={{
-            isNumeric: "You have to type valid number",
-            maxLength: "You can not type in more than 15 characters"
-          }}
-          type="text"
-          required
-        />
-
-        <FormInput
-          name="pin"
-          title="PIN"
-          validating={false}
-          validations={{
-            isNumeric: true,
-            maxLength: 4
-          }}
-          validationErrors={{
-            isNumeric: "You have to type valid number",
-            maxLength: "You can not type in more than 4 characters"
-          }}
-          type="text"
-          required
-        />
-
-        <VPButton title="Perform Transaction" visible={true} canSubmit={true} />
+        <VPButton title="Delete Profile" visible={true} canSubmit={true} />
       </Formsy>
     );
   }
@@ -139,4 +92,4 @@ const mapDispatchToProps = dispatch => {
   };
 }; */
 
-export { TransactionForm as Transaction };
+export { DeleteProfileForm as DeleteProfile };
