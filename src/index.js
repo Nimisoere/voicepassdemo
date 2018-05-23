@@ -6,6 +6,11 @@ import { App } from "./components/App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./_assets/styles/style.css";
 
-//import { store } from "./_helpers";
+import { store } from "./_helpers";
 
-render(<App />, document.getElementById("root"));
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);

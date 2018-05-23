@@ -1,5 +1,5 @@
-import { resetProfileConstants } from "../_constants";
-import { resetProfileService } from "../_services";
+import { verifyTransactionConstants } from "../_constants";
+import { verifyTransactionService } from "../_services";
 import { alertActions } from "./";
 import { history } from "../_helpers";
 
@@ -7,11 +7,11 @@ export const resetProfileActions = {
     resetProfile
 };
 
-function resetProfile(payload) {
+function verifyTransaction(payload) {
   return dispatch => {
     dispatch(request(payload));
     const apiModel = payload;
-    resetProfileService.resetProfile(apiModel).then(
+    verifyTransactionService.verifyTransaction(apiModel).then(
       response => {
         dispatch(success(response));
         history.push("/confirmation");
@@ -24,12 +24,12 @@ function resetProfile(payload) {
   };
 
   function request(payload) {
-    return { type: resetProfileConstants.RESET_PROFILE_REQUEST, payload };
+    return { type: verifyTransactionConstants.VERIFY_TRANSACTION_REQUEST, payload };
   }
   function success(response) {
-    return { type: resetProfileConstants.RESET_PROFILE_SUCCESS, response };
+    return { type: verifyTransactionConstants.VERIFY_TRANSACTION_SUCCESS, response };
   }
   function failure(error) {
-    return { type: resetProfileConstants.RESET_PROFILE_FAILURE, error };
+    return { type: verifyTransactionConstants.VERIFY_TRANSACTION_FAILURE, error };
   }
 }

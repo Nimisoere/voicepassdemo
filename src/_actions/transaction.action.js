@@ -1,17 +1,17 @@
-import { deleteProfileConstants } from "../_constants";
-import { deleteProfileService } from "../_services";
+import { transactionConstants } from "../_constants";
+import { transactionService } from "../_services";
 import { alertActions } from "./";
 import { history } from "../_helpers";
 
-export const deleteProfileActions = {
-  deleteProfile
+export const resetProfileActions = {
+    resetProfile
 };
 
-function deleteProfile(payload) {
+function performTransaction(payload) {
   return dispatch => {
     dispatch(request(payload));
     const apiModel = payload;
-    deleteProfileService.deleteProfile(apiModel).then(
+    transactionService.performTransaction(apiModel).then(
       response => {
         dispatch(success(response));
         history.push("/confirmation");
@@ -24,12 +24,12 @@ function deleteProfile(payload) {
   };
 
   function request(payload) {
-    return { type: deleteProfileConstants.DELETE_PROFILE_REQUEST, payload };
+    return { type: transactionConstants.TRANSACTION_REQUEST, payload };
   }
   function success(response) {
-    return { type: deleteProfileConstants.DELETE_PROFILE_SUCCESS, response };
+    return { type: transactionConstants.TRANSACTION_SUCCESS, response };
   }
   function failure(error) {
-    return { type: deleteProfileConstants.DELETE_PROFILE_FAILURE, error };
+    return { type: transactionConstants.TRANSACTION_FAILURE, error };
   }
 }
