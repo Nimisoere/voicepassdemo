@@ -1,7 +1,7 @@
 import { deleteProfileConstants } from "../_constants";
 import { deleteProfileService } from "../_services";
 import { alertActions } from "./";
-import { history } from "../_helpers";
+//import { history } from "../_helpers";
 
 export const deleteProfileActions = {
   deleteProfile
@@ -14,7 +14,8 @@ function deleteProfile(payload) {
     deleteProfileService.deleteProfile(apiModel).then(
       response => {
         dispatch(success(response));
-        history.push("/confirmation");
+        dispatch(alertActions.success('Success'));
+        //history.push("/confirmation");
       },
       error => {
         dispatch(failure(error));

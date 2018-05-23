@@ -1,7 +1,7 @@
 import { transactionConstants } from "../_constants";
 import { transactionService } from "../_services";
 import { alertActions } from "./";
-import { history } from "../_helpers";
+//import { history } from "../_helpers";
 
 export const transactionActions = {
   performTransaction

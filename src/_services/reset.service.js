@@ -15,7 +15,7 @@ function resetProfile(apiModel) {
 
   return fetch(apiUrls.resetProfile, requestOptions).then(
     handleResponse
-  );
+  ).then((text) => text.length ? JSON.parse(text) : {});
 }
 
 function handleResponse(response) {
@@ -23,5 +23,5 @@ function handleResponse(response) {
     return Promise.reject(response.statusText || "Oops! Something went wrong");
   }
 
-  return response.json();
+  return response.text();
 }

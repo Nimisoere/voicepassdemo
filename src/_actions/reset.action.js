@@ -1,7 +1,7 @@
 import { resetProfileConstants } from "../_constants";
 import { resetProfileService } from "../_services";
 import { alertActions } from "./";
-import { history } from "../_helpers";
+//import { history } from "../_helpers";
 
 export const resetProfileActions = {
     resetProfile
@@ -14,7 +14,8 @@ function resetProfile(payload) {
     resetProfileService.resetProfile(apiModel).then(
       response => {
         dispatch(success(response));
-        history.push("/confirmation");
+        dispatch(alertActions.success('Success'));
+        //history.push("/confirmation");
       },
       error => {
         dispatch(failure(error));

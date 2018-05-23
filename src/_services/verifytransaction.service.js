@@ -5,17 +5,11 @@ export const verifyTransactionService = {
 };
 
 function verifyTransaction(apiModel) {
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(apiModel)
-  };
-
-  return fetch(apiUrls.verifyTransaction, requestOptions).then(
-    handleResponse
-  );
+  var url = new URL(apiUrls.verifyTransaction),
+    params = { transactionId: apiModel.transactionId};
+  Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+  
+  return fetch(url).then(handleResponse);
 }
 
 function handleResponse(response) {

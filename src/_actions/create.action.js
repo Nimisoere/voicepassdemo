@@ -1,7 +1,7 @@
 import { createProfileConstants } from "../_constants";
 import { createProfileService } from "../_services";
 import { alertActions } from "./";
-import { history } from "../_helpers";
+//import { history } from "../_helpers";
 
 export const createProfileActions = {
   createProfile
