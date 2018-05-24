@@ -1,4 +1,4 @@
-const hostname = "http://www.voicepass.us/Auth";
+const hostname = "https://www.voicepass.us/Auth";
 const apiVersion = "v2";
 const apiName = "Verification";
 const baseUrl = `${hostname}/api/${apiName}`;
