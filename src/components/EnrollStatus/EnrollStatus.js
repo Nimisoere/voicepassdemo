@@ -47,7 +47,7 @@ class EnrollStatusForm extends React.Component {
 
   render() {
     const { canSubmit } = this.state;
-    const { alert, submitting } = this.props;
+    const { alert, submitting, response, success } = this.props;
 
     return (
       <div>
@@ -65,7 +65,32 @@ class EnrollStatusForm extends React.Component {
           className=""
         >
           {alert && alert.message ? (
-            <Alert className={`${alert.type}`}>{alert.message}</Alert>
+            <Alert className={`${alert.type}`}>
+              {alert.type && response && success !== "ALERT_SUCCESS" ? (
+                <div>
+                  <p>
+                    <strong>Enrollment Status:</strong>{" "}
+                    {response.enrollmentStatus}
+                  </p>
+                  <p>
+                    <strong>Enrollments Count:</strong>{" "}
+                    {response.enrollmentsCount}
+                  </p>
+                  <p>
+                    <strong>Remaining Enrollments:</strong>{" "}
+                    {response.remainingEnrollments}
+                  </p>
+                  <p>
+                    <strong>Profile ID:</strong> {response.profileId}
+                  </p>
+                  <p>
+                    <strong>Reference ID:</strong> {response.referenceId}
+                  </p>
+                </div>
+              ) : (
+                <span>{alert.message}</span>
+              )}
+            </Alert>
           ) : (
             ""
           )}

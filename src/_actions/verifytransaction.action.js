@@ -1,7 +1,7 @@
 import { verifyTransactionConstants } from "../_constants";
 import { verifyTransactionService } from "../_services";
 import { alertActions } from "./";
-import { history } from "../_helpers";
+//import { history } from "../_helpers";
 
 export const verifyTransactionActions = {
   verifyTransaction
@@ -14,7 +14,8 @@ function verifyTransaction(payload) {
     verifyTransactionService.verifyTransaction(apiModel).then(
       response => {
         dispatch(success(response));
-        history.push("/confirmation");
+        dispatch(alertActions.success('Transaction is Valid'));
+        //history.push("/confirmation");
       },
       error => {
         dispatch(failure(error));
