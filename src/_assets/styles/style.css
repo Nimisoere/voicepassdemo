@@ -224,7 +224,7 @@ a:hover {
     border-width: 0 3px 3px 0;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
-    left: 1rem;
+    left: 0.9rem;
     top: 0.45rem;
     height: 2.15rem;
     width: 2.15rem;
