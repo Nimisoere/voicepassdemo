@@ -1,9 +1,9 @@
 import React from "react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
-import { history } from "../../_helpers";
+import { AnimatedSwitch } from "react-router-transition";
+import { history, animations } from "../../_helpers";
 
 import { seoObject } from "../../_constants";
-
 import { Header } from "../Header";
 import {HomePage} from "../HomePage";
 import {CreateProfile} from "../CreateProfile";
@@ -15,8 +15,6 @@ import { ResetProfile } from "../Reset";
 import {DeleteProfile} from "../DeleteProfile";
 import {NotFound, Seo} from "../_Shared";
 
-// import {Confirmation} from "../Confirmation";
-
 export const App = ({ user, loggedIn }) => (
   <Router history={history}>
     <div className="App">
@@ -27,7 +25,14 @@ export const App = ({ user, loggedIn }) => (
       />
       <Header />
       <main>
-         <Switch>
+      <AnimatedSwitch
+           atEnter={animations.slideInTranstion.atEnter}
+           atLeave={animations.slideInTranstion.atLeave}
+           atActive={animations.slideInTranstion.atActive}
+           mapStyles={animations.mapStylesSlide}
+           className='switch-wrapper'
+          >
+          
           <Route exact path="/" component={HomePage} />
           <Route path="/create-profile" component={CreateProfile} />
           <Route path="/enroll-profile" component={Enroll} />
@@ -38,8 +43,7 @@ export const App = ({ user, loggedIn }) => (
           <Route path="/delete-profile" component={DeleteProfile} />
           <Route path="/404-not-found" component={NotFound} />
           <Redirect to="/404-not-found" /> 
-          {/* <Route path="/confirmation" component={Confirmation} /> */}
-        </Switch> 
+        </AnimatedSwitch> 
       </main>
     </div>
   </Router>

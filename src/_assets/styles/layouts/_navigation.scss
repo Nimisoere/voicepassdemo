@@ -1,8 +1,40 @@
-.main-nav{
-    background: #000;
-    padding: 0.8rem 1rem;
-    color:#fff;
-    font-size: 1.2rem;
-    border-bottom: thick #003A7D solid;
-    font-weight: 500;
+.main-nav {
+  background: #598d86;
+  padding: 0.8rem 1rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.page-description {
+  border-bottom: thin solid #e1b08e;
+  padding: 0.7rem 6.5rem;
+  position: relative;
+  background: #FFEEE2;
+  color: #9A5E33;
+  &::before {
+    position: absolute;
+    border: solid #e1b08e;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4rem;
+    content: "";
+    display: inline-block;
+    background-color: #e1b08e;
+  }
+  &::after{
+    position: absolute;
+    border: solid #e1b08e;
+    border-width: 0 3px 3px 0;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    left: 2.9rem;
+    top: 0.45rem;
+    height: 2.15rem;
+    width: 2.15rem;
+    content: "";
+    display: inline-block;
+    background-color: #e1b08e;
+  }
 }

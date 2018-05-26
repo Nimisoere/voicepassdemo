@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 import { deleteProfileActions, alertActions } from "../../_actions";
 import Formsy from "formsy-react";
 import { seoObject } from "../../_constants";
-import { FormInput, VPButton, Seo } from "../_Shared";
+import { FormInput, VPButton, Seo, PageDescription } from "../_Shared";
 
 class DeleteProfileForm extends React.Component {
   state = {
@@ -55,6 +55,7 @@ class DeleteProfileForm extends React.Component {
           description={seoObject.base.description}
           base={false}
         />
+        <PageDescription title={seoObject.deleteProfile.title} />
         <Formsy
           ref="deleteForm"
           onValidSubmit={this.handleSubmit}

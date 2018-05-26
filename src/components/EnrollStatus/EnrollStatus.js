@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 import { enrollmentStatusActions, alertActions } from "../../_actions";
 import Formsy from "formsy-react";
 import { seoObject } from "../../_constants";
-import { FormInput, VPButton, Seo } from "../_Shared";
+import { FormInput, VPButton, Seo, PageDescription } from "../_Shared";
 
 class EnrollStatusForm extends React.Component {
   state = {
@@ -56,6 +56,7 @@ class EnrollStatusForm extends React.Component {
           description={seoObject.base.description}
           base={false}
         />
+        <PageDescription title={seoObject.enrollmentStatus.title} />
         <Formsy
           ref="enrollmentStatusForm"
           onValidSubmit={this.handleSubmit}

@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 import { transactionActions, alertActions } from "../../_actions";
 import Formsy from "formsy-react";
 import { seoObject } from "../../_constants";
-import { FormInput, VPButton, Seo } from "../_Shared";
+import { FormInput, VPButton, Seo, PageDescription } from "../_Shared";
 
 class TransactionForm extends React.Component {
   state = {
@@ -56,6 +56,7 @@ class TransactionForm extends React.Component {
           description={seoObject.base.description}
           base={false}
         />
+        <PageDescription title={seoObject.transation.title} />
         <Formsy
           ref="transactionForm"
           onValidSubmit={this.handleSubmit}
