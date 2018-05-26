@@ -1,4 +1,5 @@
 import { apiUrls } from "../_constants";
+import { handleResponse } from "../_helpers";
 
 export const transactionService = {
     performTransaction
@@ -16,12 +17,4 @@ function performTransaction(apiModel) {
   return fetch(apiUrls.performTransaction, requestOptions).then(
     handleResponse
   );
-}
-
-function handleResponse(response) {
-  if (!response.ok) {
-    return Promise.reject(response.statusText || "Oops! Something went wrong");
-  }
-
-  return response.json();
 }

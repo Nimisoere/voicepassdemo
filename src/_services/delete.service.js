@@ -1,4 +1,5 @@
 import { apiUrls } from "../_constants";
+import { handleResponse } from "../_helpers";
 
 export const deleteProfileService = {
   deleteProfile
@@ -16,12 +17,4 @@ function deleteProfile(apiModel) {
   return fetch(apiUrls.deleteProfile, requestOptions)
     .then(handleResponse)
     .then(text => (text.length ? JSON.parse(text) : {}));
-}
-
-function handleResponse(response) {
-  if (!response.ok) {
-    return Promise.reject(response.statusText || "Oops! Something went wrong");
-  }
-
-  return response.text();
 }
