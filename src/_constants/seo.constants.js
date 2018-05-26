@@ -45,8 +45,8 @@ export const seoObject = {
     description: "",
     h1: ""
   },
-  confirmation: {
-    title: "Confirmation",
+  notfound: {
+    title: "404",
     description: "",
     h1: ""
   },
