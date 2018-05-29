@@ -14,6 +14,7 @@ import { VerifyTransaction } from "../VerifyTransaction";
 import { ResetProfile } from "../Reset";
 import { DeleteProfile } from "../DeleteProfile";
 import { NotFound, Seo } from "../_Shared";
+import { AccountDisplay } from "../AccountDisplay";
 
 export const App = ({ user, loggedIn }) => (
   <Router history={history} basename={process.env.PUBLIC_URL}>
@@ -24,6 +25,7 @@ export const App = ({ user, loggedIn }) => (
         base={true}
       />
       <Header />
+      <AccountDisplay />
       <main>
         <AnimatedSwitch
           atEnter={animations.slideInTranstion.atEnter}

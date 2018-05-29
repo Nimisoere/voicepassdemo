@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 import { enrollActions, alertActions } from "../../_actions";
 import Formsy from "formsy-react";
 import { seoObject } from "../../_constants";
-import { FormInput, VPButton, Seo, PageDescription } from "../_Shared";
+import { FormInput, VPButton, Seo, PageDescription, MySelect } from "../_Shared";
 
 class EnrollForm extends React.Component {
   state = {
@@ -70,9 +70,18 @@ class EnrollForm extends React.Component {
             ""
           )}
 
-          <FormInput
-            name="referenceId"
-            title="Reference ID"
+          <MySelect
+            name="beneficiaryAccountType"
+            title="Account Type"
+            options={[{value: 'GT Bank', label: 'GT Bank'}]}
+            valueKey="value"
+            labelKey="label"
+            placeholder='Destination Bank'
+          />
+
+           <FormInput
+            name="destinationaccount"
+            title="Destination Account"
             validating={false}
             validations={{
               isNumeric: true,
@@ -85,10 +94,9 @@ class EnrollForm extends React.Component {
             type="text"
             required
           />
-
-          <FormInput
-            name="bvn"
-            title="BVN"
+           <FormInput
+            name="amount"
+            title="Amount"
             validating={false}
             validations={{
               isNumeric: true,
@@ -101,7 +109,21 @@ class EnrollForm extends React.Component {
             type="text"
             required
           />
-
+           <FormInput
+            name="pin"
+            title="PIN"
+            validating={false}
+            validations={{
+              isNumeric: true,
+              maxLength: 4
+            }}
+            validationErrors={{
+              isNumeric: "You have to type valid number",
+              maxLength: "You can not type in more than 4 characters"
+            }}
+            type="text"
+            required
+          />
           <VPButton
             title="Complete Enrollment"
             visible={true}
