@@ -57,8 +57,8 @@ const fadeTransition = {
 };
 
 const slideInTranstion = {
-  atEnter: { translateX: 100 },
-  atLeave: { translateX: -100 },
+  atEnter: { translateX: -100 },
+  atLeave: { translateX: 100 },
   atActive: { translateX: 0 }
 };
 
