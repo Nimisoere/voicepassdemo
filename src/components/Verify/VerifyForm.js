@@ -5,7 +5,14 @@ import { bindActionCreators } from "redux";
 import { transactionActions, alertActions } from "../../_actions";
 import Formsy from "formsy-react";
 import { seoObject } from "../../_constants";
-import { FormInput, VPButton, Seo, PageDescription } from "../_Shared";
+import {
+  FormInput,
+  VPButton,
+  Seo,
+  PageDescription,
+  MySelect
+} from "../_Shared";
+import { Verifying } from "./Verifying";
 
 class TransactionForm extends React.Component {
   state = {
@@ -41,111 +48,108 @@ class TransactionForm extends React.Component {
   }
 
   handleSubmit = data => {
-    const { amount, pin, ...actionData } = data;
-    this.props.submit(actionData);
+    this.props.submit(data);
   };
 
   render() {
     const { canSubmit } = this.state;
-    const { alert, submitting } = this.props;
+    const { alert, submitting, success } = this.props;
 
     return (
       <div>
-        <Seo
-          title={seoObject.transation.title}
-          description={seoObject.base.description}
-          base={false}
-        />
-        <PageDescription title={seoObject.transation.title} />
-        <Formsy
-          ref="transactionForm"
-          onValidSubmit={this.handleSubmit}
-          onValid={this.enableButton}
-          onInvalid={this.disableButton}
-          className=""
-        >
-          {alert && alert.message ? (
-            <Alert
-              className={`${alert.type}`}
-              isOpen={this.state.visible}
-              toggle={this.onDismiss}
+        {!success ? (
+          <div>
+            <Seo
+              title={seoObject.transation.title}
+              description={seoObject.base.description}
+              base={false}
+            />
+            <PageDescription title={seoObject.transation.title} />
+            <Formsy
+              ref="transactionForm"
+              onValidSubmit={this.handleSubmit}
+              onValid={this.enableButton}
+              onInvalid={this.disableButton}
+              className=""
             >
-              {alert.message}
-            </Alert>
-          ) : (
-            ""
-          )}
+              {alert && alert.message ? (
+                <Alert
+                  className={`${alert.type}`}
+                  isOpen={this.state.visible}
+                  toggle={this.onDismiss}
+                >
+                  {alert.message}
+                </Alert>
+              ) : (
+                ""
+              )}
 
-          <FormInput
-            name="referenceId"
-            title="Reference ID"
-            validating={false}
-            validations={{
-              isNumeric: true,
-              maxLength: 15
-            }}
-            validationErrors={{
-              isNumeric: "You have to type valid number",
-              maxLength: "You can not type in more than 15 characters"
-            }}
-            type="text"
-            required
-          />
-          <FormInput
-            name="transactionId"
-            title="Transaction ID"
-            validating={false}
-            validations={{
-              isNumeric: true,
-              maxLength: 15
-            }}
-            validationErrors={{
-              isNumeric: "You have to type valid number",
-              maxLength: "You can not type in more than 15 characters"
-            }}
-            type="text"
-            required
-          />
+              <MySelect
+                name="beneficiaryAccountType"
+                title="Account Type"
+                options={[{ value: "GT Bank", label: "GT Bank" }]}
+                valueKey="value"
+                validating={submitting}
+                labelKey="label"
+                placeholder="Destination Bank"
+              />
 
-          <FormInput
-            name="amount"
-            title="Amount"
-            validating={false}
-            validations={{
-              isNumeric: true,
-              maxLength: 15
-            }}
-            validationErrors={{
-              isNumeric: "You have to type valid number",
-              maxLength: "You can not type in more than 15 characters"
-            }}
-            type="text"
-            required
-          />
-
-          <FormInput
-            name="pin"
-            title="PIN"
-            validating={false}
-            validations={{
-              isNumeric: true,
-              maxLength: 4
-            }}
-            validationErrors={{
-              isNumeric: "You have to type valid number",
-              maxLength: "You can not type in more than 4 characters"
-            }}
-            type="text"
-            required
-          />
-
-          <VPButton
-            title="Perform Transaction"
-            visible={true}
-            inProcess={submitting}
-            canSubmit={canSubmit}
-          />
-        </Formsy>
+              <FormInput
+                name="destinationaccount"
+                title="Destination Account"
+                validating={submitting}
+                validations={{
+                  isNumeric: true,
+                  maxLength: 10
+                }}
+                validationErrors={{
+                  isNumeric: "You have to type valid number",
+                  maxLength: "You can not type in more than 10 characters"
+                }}
+                type="text"
+                required
+              />
+              <FormInput
+                name="transferAmount"
+                title={["Amount ", <small key="small">(in Naira)</small>]}
+                validating={submitting}
+                validations={{
+                  isNumeric: true,
+                  matchRegexp: /^0*[1-9]\d*$/
+                }}
+                validationErrors={{
+                  isNumeric: "You have to type valid number",
+                  matchRegexp: "You have to type valid number"
+                }}
+                type="number"
+                required
+              />
+              <FormInput
+                name="pin"
+                title="PIN"
+                validating={submitting}
+                validations={{
+                  isNumeric: true,
+                  maxLength: 4
+                }}
+                validationErrors={{
+                  isNumeric: "You have to type valid number",
+                  maxLength: "You can not type in more than 4 characters"
+                }}
+                type="text"
+                required
+              />
+              <VPButton
+                title="Proceed"
+                visible={true}
+                inProcess={submitting}
+                canSubmit={canSubmit}
+              />
+            </Formsy>
+          </div>
+        ) : (
+          <Verifying />
+        )}
       </div>
     );
   }

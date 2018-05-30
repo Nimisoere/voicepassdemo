@@ -79,6 +79,7 @@ class EnrollForm extends React.Component {
             title="Account Type"
             options={[{value: 'GT Bank', label: 'GT Bank'}]}
             valueKey="value"
+            validating={submitting}
             labelKey="label"
             placeholder='Destination Bank'
           />
@@ -129,7 +130,7 @@ class EnrollForm extends React.Component {
             required
           />
           <VPButton
-            title="Complete Enrollment"
+            title="Proceed"
             visible={true}
             inProcess={submitting}
             canSubmit={canSubmit}

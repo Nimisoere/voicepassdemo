@@ -17,7 +17,6 @@ function createProfile(payload) {
       phoneNumber: payload.phonenumber,
       referenceId: payload.phonenumber
     };
-    console.log(apiModel)
     createProfileService.createProfile(apiModel).then(
       response => {
         dispatch(success(response));

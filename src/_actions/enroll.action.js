@@ -15,7 +15,7 @@ function enroll(payload) {
     enrollmentService.enroll(apiModel).then(
       response => {
         dispatch(success(response));
-        dispatch(alertActions.success('Success'));
+        dispatch(alertActions.success("Success"));
         //history.push("/enroll-voice");
       },
       error => {
@@ -36,7 +36,19 @@ function enroll(payload) {
   }
 }
 
-function enrollVoice(){
-  history.push("/enroll-voice");
-  return { type: enrollmentConstants.ENROLLVOICE };
+function enrollVoice() {
+  return dispatch => {
+    dispatch(request());
+    setTimeout(() => {
+      dispatch(success());
+      history.push("/enroll-voice");
+    }, 1000);
+  };
+
+  function request() {
+    return { type: enrollmentConstants.ENROLLMENT_REQUEST };
+  }
+  function success() {
+    return { type: enrollmentConstants.ENROLLVOICE };
+  }
 }

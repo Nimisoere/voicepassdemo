@@ -1,20 +1,27 @@
 import { transactionConstants } from "../_constants";
 import { transactionService } from "../_services";
 import { alertActions } from "./";
+import uuidv1 from "uuid/v1";
 //import { history } from "../_helpers";
 
 export const transactionActions = {
   performTransaction
 };
 
+const generateFakeRIdTid = () => {
+  return {
+    transactionId: uuidv1(),
+    referenceId: "08054139218"
+  };
+};
+
 function performTransaction(payload) {
   return dispatch => {
-    dispatch(request(payload));
-    const apiModel = payload;
-    transactionService.performTransaction(apiModel).then(
+    dispatch(request(generateFakeRIdTid()));
+    transactionService.performTransaction(generateFakeRIdTid()).then(
       response => {
         dispatch(success(response));
-        dispatch(alertActions.success('Success'));
+        //dispatch(alertActions.success('Success'));
         //history.push("/confirmation");
       },
       error => {
