@@ -7,13 +7,14 @@ import { seoObject } from "../../_constants";
 import { Header } from "../Header";
 import { HomePage } from "../HomePage";
 import { CreateProfile } from "../CreateProfile";
-import { Enroll } from "../Enroll";
+import { Enroll, EnrollVoice } from "../Enroll";
 import { EnrollStatus } from "../EnrollStatus";
 import { Transaction } from "../Verify";
 import { VerifyTransaction } from "../VerifyTransaction";
 import { ResetProfile } from "../Reset";
 import { DeleteProfile } from "../DeleteProfile";
 import { NotFound, Seo } from "../_Shared";
+import { AccountDisplay } from "../AccountDisplay";
 
 export const App = ({ user, loggedIn }) => (
   <Router history={history} basename={process.env.PUBLIC_URL}>
@@ -24,6 +25,7 @@ export const App = ({ user, loggedIn }) => (
         base={true}
       />
       <Header />
+      <AccountDisplay />
       <main>
         <AnimatedSwitch
           atEnter={animations.slideInTranstion.atEnter}
@@ -40,6 +42,7 @@ export const App = ({ user, loggedIn }) => (
           <Route path="/verify-transaction" component={VerifyTransaction} />
           <Route path="/reset-profile" component={ResetProfile} />
           <Route path="/delete-profile" component={DeleteProfile} />
+          <Route path="/enroll-voice" component={EnrollVoice} />
           <Route path="/404-not-found" component={NotFound} />
           <Redirect to="/404-not-found" />
         </AnimatedSwitch>

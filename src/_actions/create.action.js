@@ -10,12 +10,18 @@ export const createProfileActions = {
 function createProfile(payload) {
   return dispatch => {
     dispatch(request(payload));
-    const apiModel = payload;
+    const apiModel = {
+      email: 'lawson.nimi@yahoo.com',
+      firstName: "Nimi",
+      lastName: "Lawson",
+      phoneNumber: payload.phonenumber,
+      referenceId: payload.phonenumber
+    };
+    console.log(apiModel)
     createProfileService.createProfile(apiModel).then(
       response => {
         dispatch(success(response));
-        dispatch(alertActions.success('Success'));
-        //history.push("/confirmation");
+        dispatch(alertActions.success("Success"));
       },
       error => {
         dispatch(failure(error));

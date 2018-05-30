@@ -2,12 +2,18 @@ import React from "react";
 import { Alert } from "reactstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { enrollActions, alertActions } from "../../_actions";
+import { createProfileActions, alertActions } from "../../_actions";
 import Formsy from "formsy-react";
 import { seoObject } from "../../_constants";
-import { FormInput, VPButton, Seo, PageDescription, MySelect } from "../_Shared";
+import {
+  FormInput,
+  VPButton,
+  Seo,
+  PageDescription,
+  MySelect
+} from "../_Shared";
 
-class EnrollForm extends React.Component {
+class EnrollVoiceForm extends React.Component {
   state = {
     canSubmit: false
   };
@@ -40,14 +46,12 @@ class EnrollForm extends React.Component {
     });
   }
 
-  enrollVoice = () => {
-    this.props.enrollVoice();
-  }
+  handleSubmit = data => {
+    //const { bvn, ...actionData } = data;
+    this.props.submit(data);
+  };
 
-  /* handleSubmit = data => {
-    const { bvn, ...actionData } = data;
-    this.props.submit(actionData);
-  }; */
+  showEnrollment = data => {};
 
   render() {
     const { canSubmit } = this.state;
@@ -63,73 +67,44 @@ class EnrollForm extends React.Component {
         <PageDescription title={seoObject.enrollment.title} />
         <Formsy
           ref="enrollmentForm"
-          onValidSubmit={this.enrollVoice}
+          onValidSubmit={this.handleSubmit}
           onValid={this.enableButton}
           onInvalid={this.disableButton}
           className=""
         >
+          <Alert className="alert-info">
+            <h5>
+              Transaction Processed <br />
+              <small>
+                please enroll your voice to protect your transactions in future
+              </small>
+            </h5>
+          </Alert>
+
           {alert && alert.message ? (
             <Alert className={`${alert.type}`}>{alert.message}</Alert>
           ) : (
             ""
           )}
 
-          <MySelect
-            name="beneficiaryAccountType"
-            title="Account Type"
-            options={[{value: 'GT Bank', label: 'GT Bank'}]}
-            valueKey="value"
-            labelKey="label"
-            placeholder='Destination Bank'
-          />
-
-           <FormInput
-            name="destinationaccount"
-            title="Destination Account"
+          <FormInput
+            name="phonenumber"
+            title="Phone number"
             validating={submitting}
             validations={{
               isNumeric: true,
-              maxLength: 10
+              maxLength: 15
             }}
             validationErrors={{
               isNumeric: "You have to type valid number",
-              maxLength: "You can not type in more than 10 characters"
+              maxLength: "You can not type in more than 15 characters"
             }}
             type="text"
             required
           />
-            <FormInput
-            name="transferAmount"
-            title={["Amount ", <small key="small">(in Naira)</small>]}
-            validating={submitting}
-            validations={{
-              isNumeric: true,
-              matchRegexp: /^0*[1-9]\d*$/
-            }}
-            validationErrors={{
-              isNumeric: "You have to type valid number",
-              matchRegexp: "You have to type valid number"
-            }}
-            type="number"
-            required
-          />
-           <FormInput
-            name="pin"
-            title="PIN"
-            validating={submitting}
-            validations={{
-              isNumeric: true,
-              maxLength: 4
-            }}
-            validationErrors={{
-              isNumeric: "You have to type valid number",
-              maxLength: "You can not type in more than 4 characters"
-            }}
-            type="text"
-            required
-          />
+         
           <VPButton
-            title="Complete Enrollment"
+            title="Enroll your voice"
             visible={true}
             inProcess={submitting}
             canSubmit={canSubmit}
@@ -142,7 +117,7 @@ class EnrollForm extends React.Component {
 
 const mapStateToProps = state => {
   const { alert } = state;
-  const { submitting, success, failed, response, error } = state.enrollment;
+  const { submitting, success, failed, response, error } = state.createProfile;
   return {
     alert,
     submitting,
@@ -156,10 +131,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     clearAlerts: bindActionCreators(alertActions.clear, dispatch),
-    enrollVoice: bindActionCreators(enrollActions.enrollVoice, dispatch),
-    //submit: bindActionCreators(enrollActions.enroll, dispatch)
+    submit: bindActionCreators(createProfileActions.createProfile, dispatch)
   };
 };
-const Enroll = connect(mapStateToProps, mapDispatchToProps)(EnrollForm);
+const EnrollVoice = connect(mapStateToProps, mapDispatchToProps)(
+  EnrollVoiceForm
+);
 
-export { Enroll };
+export { EnrollVoice };

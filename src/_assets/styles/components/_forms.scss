@@ -6,6 +6,21 @@
 .form-label-group {
   position: relative;
   margin-bottom: 0;
+  .Select-control{
+    border: none;
+    border-bottom: thin solid #ddd;
+    border-radius: 0;
+    padding: 0.8rem 0.5rem;
+    .Select-placeholder{
+      color: #CCC;
+      left: 0.5rem;
+      line-height: 4rem;
+    }
+    .Select-value{
+      left: 0.5rem;
+      line-height: 4rem;
+    }
+  }
   .invalid-feedback {
     background: #dc3545;
     color: #fff;
@@ -30,7 +45,6 @@
     transition: all 0.1s ease-in-out;
   }
   input.form-control {
-    border-radius: 3px;
     border-radius: 0;
     border-left: none;
     border-top: none;

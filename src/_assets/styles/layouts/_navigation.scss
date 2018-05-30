@@ -7,12 +7,13 @@
 }
 
 .page-description {
-  border-bottom: thin solid #e1b08e;
-  padding: 0.7rem 5rem;
+  border-bottom: thin solid #598d86;
+  padding: 1rem;
   position: relative;
-  background: #FFEEE2;
-  color: #9A5E33;
-  &::before {
+  background: #598d86;
+  font-size: 1rem;
+  color: #FFF;
+  /* &::before {
     position: absolute;
     border: solid #e1b08e;
     left: 0;
@@ -36,5 +37,5 @@
     content: "";
     display: inline-block;
     background-color: #e1b08e;
-  }
+  } */
 }

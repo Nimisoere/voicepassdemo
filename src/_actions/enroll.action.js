@@ -1,10 +1,11 @@
 import { enrollmentConstants } from "../_constants";
 import { enrollmentService } from "../_services";
 import { alertActions } from "./";
-//import { history } from "../_helpers";
+import { history } from "../_helpers";
 
 export const enrollActions = {
-  enroll
+  enroll,
+  enrollVoice
 };
 
 function enroll(payload) {
@@ -15,7 +16,7 @@ function enroll(payload) {
       response => {
         dispatch(success(response));
         dispatch(alertActions.success('Success'));
-        //history.push("/confirmation");
+        //history.push("/enroll-voice");
       },
       error => {
         dispatch(failure(error));
@@ -33,4 +34,9 @@ function enroll(payload) {
   function failure(error) {
     return { type: enrollmentConstants.ENROLLMENT_FAILURE, error };
   }
+}
+
+function enrollVoice(){
+  history.push("/enroll-voice");
+  return { type: enrollmentConstants.ENROLLVOICE };
 }

@@ -13,7 +13,7 @@ export const HomePage = () => (
       base={false}
     />
     <ListGroup className="home-menu">
-      <NavLink
+     {/*  <NavLink
         tag="a"
         className="ripple list-group-item-action list-group-item"
         to="/create-profile"
@@ -22,7 +22,7 @@ export const HomePage = () => (
         <span className="float-right">
           <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
         </span>
-      </NavLink>
+      </NavLink> */}
 
       <NavLink
         tag="a"
@@ -34,7 +34,7 @@ export const HomePage = () => (
           <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
         </span>
       </NavLink>
-      <NavLink
+     {/*  <NavLink
         tag="a"
         className="ripple list-group-item-action list-group-item"
         to="/enrollment-status"
@@ -43,7 +43,7 @@ export const HomePage = () => (
         <span className="float-right">
           <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
         </span>
-      </NavLink>
+      </NavLink> */}
       <NavLink
         tag="a"
         className="ripple list-group-item-action list-group-item"
@@ -54,7 +54,7 @@ export const HomePage = () => (
           <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
         </span>
       </NavLink>
-      <NavLink
+     {/*  <NavLink
         tag="a"
         className="ripple list-group-item-action list-group-item"
         to="/verify-transaction"
@@ -83,7 +83,7 @@ export const HomePage = () => (
         <span className="float-right">
           <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
         </span>
-      </NavLink>
+      </NavLink> */}
     </ListGroup>
   </div>
 );
