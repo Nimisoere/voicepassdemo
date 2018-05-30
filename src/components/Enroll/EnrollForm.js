@@ -86,37 +86,37 @@ class EnrollForm extends React.Component {
            <FormInput
             name="destinationaccount"
             title="Destination Account"
-            validating={false}
+            validating={submitting}
             validations={{
               isNumeric: true,
-              maxLength: 15
+              maxLength: 10
             }}
             validationErrors={{
               isNumeric: "You have to type valid number",
-              maxLength: "You can not type in more than 15 characters"
+              maxLength: "You can not type in more than 10 characters"
             }}
             type="text"
             required
           />
-           <FormInput
-            name="amount"
-            title="Amount"
-            validating={false}
+            <FormInput
+            name="transferAmount"
+            title={["Amount ", <small key="small">(in Naira)</small>]}
+            validating={submitting}
             validations={{
               isNumeric: true,
-              maxLength: 15
+              matchRegexp: /^0*[1-9]\d*$/
             }}
             validationErrors={{
               isNumeric: "You have to type valid number",
-              maxLength: "You can not type in more than 15 characters"
+              matchRegexp: "You have to type valid number"
             }}
-            type="text"
+            type="number"
             required
           />
            <FormInput
             name="pin"
             title="PIN"
-            validating={false}
+            validating={submitting}
             validations={{
               isNumeric: true,
               maxLength: 4

@@ -87,12 +87,10 @@ class EnrollVoiceForm extends React.Component {
             ""
           )}
 
-         
-
           <FormInput
             name="phonenumber"
             title="Phone number"
-            validating={false}
+            validating={submitting}
             validations={{
               isNumeric: true,
               maxLength: 15

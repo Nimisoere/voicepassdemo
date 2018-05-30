@@ -11,9 +11,9 @@ function createProfile(payload) {
   return dispatch => {
     dispatch(request(payload));
     const apiModel = {
-      email: "",
-      firstName: "",
-      lastName: "",
+      email: 'lawson.nimi@yahoo.com',
+      firstName: "Nimi",
+      lastName: "Lawson",
       phoneNumber: payload.phonenumber,
       referenceId: payload.phonenumber
     };
