@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { seoObject } from "../../_constants";
 import { Seo } from "../_Shared";
 import MaterialIcon from "material-icons-react";
-
+import { createProfileService } from "../../_services";
 export const HomePage = () => (
   <div>
     <Seo
@@ -13,7 +13,7 @@ export const HomePage = () => (
       base={false}
     />
     <ListGroup className="home-menu">
-     {/*  <NavLink
+      {/*  <NavLink
         tag="a"
         className="ripple list-group-item-action list-group-item"
         to="/create-profile"
@@ -34,7 +34,7 @@ export const HomePage = () => (
           <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
         </span>
       </NavLink>
-     {/*  <NavLink
+      {/*  <NavLink
         tag="a"
         className="ripple list-group-item-action list-group-item"
         to="/enrollment-status"
@@ -46,7 +46,10 @@ export const HomePage = () => (
       </NavLink> */}
       <NavLink
         tag="a"
-        className="ripple list-group-item-action list-group-item"
+        className={
+          "ripple list-group-item-action list-group-item " +
+          (createProfileService.hasRefId() ? "" : "blur")
+        }
         to="/perform-transaction"
       >
         Perform Transaction
@@ -54,7 +57,7 @@ export const HomePage = () => (
           <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
         </span>
       </NavLink>
-     {/*  <NavLink
+      {/*  <NavLink
         tag="a"
         className="ripple list-group-item-action list-group-item"
         to="/verify-transaction"

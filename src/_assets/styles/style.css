@@ -185,6 +185,10 @@ a:hover {
   border-radius: 0;
   word-wrap: break-word; }
 
+.blur {
+  pointer-events: none;
+  filter: blur(2px); }
+
 /* Ripple effect */
 .ripple {
   background-position: center;

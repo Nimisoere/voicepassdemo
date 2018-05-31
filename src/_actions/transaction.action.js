@@ -1,5 +1,5 @@
 import { transactionConstants } from "../_constants";
-import { transactionService } from "../_services";
+import { transactionService, createProfileService } from "../_services";
 import { alertActions } from "./";
 import uuidv1 from "uuid/v1";
 //import { history } from "../_helpers";
@@ -11,7 +11,7 @@ export const transactionActions = {
 const generateFakeRIdTid = () => {
   return {
     transactionId: uuidv1(),
-    referenceId: "08054139218"
+    referenceId: createProfileService.getReferenceId()
   };
 };
 

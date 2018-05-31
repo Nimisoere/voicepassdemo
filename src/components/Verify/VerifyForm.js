@@ -2,7 +2,7 @@ import React from "react";
 import { Alert } from "reactstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { transactionActions, alertActions } from "../../_actions";
+import { transactionActions, alertActions, verifyTransactionActions } from "../../_actions";
 import Formsy from "formsy-react";
 import { seoObject } from "../../_constants";
 import {
@@ -12,7 +12,7 @@ import {
   PageDescription,
   MySelect
 } from "../_Shared";
-import { Verifying } from "./Verifying";
+import Verifying from "./Verifying";
 
 class TransactionForm extends React.Component {
   state = {
@@ -38,7 +38,7 @@ class TransactionForm extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState((previousState, nextProps) => {
       if (nextProps.success) {
-        this.resetForm();
+        //this.resetForm();
         return {
           ...previousState,
           submitSuccess: true
@@ -47,17 +47,21 @@ class TransactionForm extends React.Component {
     });
   }
 
+  handleVerification = (transactionId) => {
+    this.props.verifyTransaction({transactionId});
+  }
+
   handleSubmit = data => {
     this.props.submit(data);
   };
 
   render() {
-    const { canSubmit } = this.state;
-    const { alert, submitting, success } = this.props;
+    const { canSubmit, submitSuccess } = this.state;
+    const { alert, submitting, success, response } = this.props;
 
     return (
       <div>
-        {!success ? (
+        {!submitSuccess ? (
           <div>
             <Seo
               title={seoObject.transation.title}
@@ -148,7 +152,7 @@ class TransactionForm extends React.Component {
             </Formsy>
           </div>
         ) : (
-          <Verifying />
+          <Verifying response={response} VerifyTransaction={this.handleVerification} />
         )}
       </div>
     );
@@ -171,7 +175,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     clearAlerts: bindActionCreators(alertActions.clear, dispatch),
-    submit: bindActionCreators(transactionActions.performTransaction, dispatch)
+    submit: bindActionCreators(transactionActions.performTransaction, dispatch),
+    verifyTransaction: bindActionCreators(verifyTransactionActions.verifyTransaction, dispatch)
   };
 };
 const Transaction = connect(mapStateToProps, mapDispatchToProps)(

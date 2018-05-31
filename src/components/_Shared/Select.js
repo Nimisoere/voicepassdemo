@@ -1,6 +1,6 @@
 import React from "react";
 import { withFormsy } from "formsy-react";
-import { FormGroup, FormFeedback, Label } from "reactstrap";
+import { FormFeedback } from "reactstrap";
 import "react-select/dist/react-select.css";
 import Select from "react-select";
 
@@ -23,7 +23,6 @@ class MySelect extends React.Component {
       showError,
       getValue,
       name,
-      title,
       isPristine,
       hasValue
     } = this.props;

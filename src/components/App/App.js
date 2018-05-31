@@ -2,7 +2,7 @@ import React from "react";
 import { Router, Route, Redirect } from "react-router-dom";
 import { AnimatedSwitch } from "react-router-transition";
 import { history, animations } from "../../_helpers";
-
+import {PrivateRoute} from "../_Routes";
 import { seoObject } from "../../_constants";
 import { Header } from "../Header";
 import { HomePage } from "../HomePage";
@@ -38,8 +38,8 @@ export const App = ({ user, loggedIn }) => (
           {/* <Route path="/create-profile" component={CreateProfile} /> */}
           <Route path="/enroll-profile" component={Enroll} />
           {/* <Route path="/enrollment-status" component={EnrollStatus} /> */}
-          <Route path="/perform-transaction" component={Transaction} />
-         {/*  <Route path="/verify-transaction" component={VerifyTransaction} />
+          <PrivateRoute path="/perform-transaction" component={Transaction} />
+          {/*  <Route path="/verify-transaction" component={VerifyTransaction} />
           <Route path="/reset-profile" component={ResetProfile} />
           <Route path="/delete-profile" component={DeleteProfile} /> */}
           <Route path="/enroll-voice" component={EnrollVoice} />

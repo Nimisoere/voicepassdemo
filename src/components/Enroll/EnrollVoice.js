@@ -10,7 +10,6 @@ import {
   VPButton,
   Seo,
   PageDescription,
-  MySelect
 } from "../_Shared";
 
 class EnrollVoiceForm extends React.Component {
