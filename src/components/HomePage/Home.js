@@ -29,7 +29,7 @@ export const HomePage = () => (
         className="ripple list-group-item-action list-group-item"
         to="/enroll-profile"
       >
-        Enroll
+        Enrollment
         <span className="float-right">
           <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
         </span>
@@ -52,7 +52,7 @@ export const HomePage = () => (
         }
         to="/perform-transaction"
       >
-        Perform Transaction
+        Verification
         <span className="float-right">
           <MaterialIcon icon="keyboard_arrow_right" color="#ccc" />
         </span>

@@ -11,9 +11,9 @@ function createProfile(payload) {
   return dispatch => {
     dispatch(request(payload));
     const apiModel = {
-      email: 'lawson.nimi@yahoo.com',
-      firstName: "Nimi",
-      lastName: "Lawson",
+      email: 'info@voicepass.us',
+      firstName: "Voice",
+      lastName: "Pass",
       phoneNumber: payload.phonenumber,
       referenceId: payload.phonenumber
     };

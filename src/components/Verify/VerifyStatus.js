@@ -20,10 +20,10 @@ class VerifyStatusConfirmation extends React.Component {
                 <p>
                   <strong>Transaction ID:</strong> {response.transactionId}
                 </p>
-                <p>
+                {/* <p>
                   <strong>Reference ID:</strong> {response.referenceId}
-                </p>
-                <Table>
+                </p> */}
+                {/* <Table>
                   <tbody>
                     <tr>
                       <th scope="row">Profile ID</th>
@@ -46,7 +46,7 @@ class VerifyStatusConfirmation extends React.Component {
                       <td>{response.email}</td>
                     </tr>
                   </tbody>
-                </Table>
+                </Table> */}
               </div>
             </Col>
           </Row>
