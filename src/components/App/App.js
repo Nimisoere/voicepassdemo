@@ -10,8 +10,8 @@ import { HomePage } from "../HomePage";
 import { Enroll, EnrollVoice } from "../Enroll";
 /* import { EnrollStatus } from "../EnrollStatus"; */
 import { Transaction } from "../Verify";
-/* import { VerifyTransaction } from "../VerifyTransaction";
-import { ResetProfile } from "../Reset";
+import { VerifyStatus } from "../Verify";
+/*import { ResetProfile } from "../Reset";
 import { DeleteProfile } from "../DeleteProfile"; */
 import { NotFound, Seo } from "../_Shared";
 import { AccountDisplay } from "../AccountDisplay";
@@ -43,6 +43,7 @@ export const App = ({ user, loggedIn }) => (
           <Route path="/reset-profile" component={ResetProfile} />
           <Route path="/delete-profile" component={DeleteProfile} /> */}
           <Route path="/enroll-voice" component={EnrollVoice} />
+          <Route path="/verification-status" component={VerifyStatus} />
           <Route path="/404-not-found" component={NotFound} />
           <Redirect to="/404-not-found" />
         </AnimatedSwitch>

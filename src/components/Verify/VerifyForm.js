@@ -2,7 +2,11 @@ import React from "react";
 import { Alert } from "reactstrap";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { transactionActions, alertActions, verifyTransactionActions } from "../../_actions";
+import {
+  transactionActions,
+  alertActions,
+  verifyTransactionActions
+} from "../../_actions";
 import Formsy from "formsy-react";
 import { seoObject } from "../../_constants";
 import {
@@ -21,6 +25,11 @@ class TransactionForm extends React.Component {
 
   componentWillUnmount() {
     this.props.clearAlerts();
+    this.setState({
+      ...this.state,
+      submitSuccess: false,
+      canSubmit: false
+    });
   }
 
   disableButton = () => {
@@ -47,9 +56,9 @@ class TransactionForm extends React.Component {
     });
   }
 
-  handleVerification = (transactionId) => {
-    this.props.verifyTransaction({transactionId});
-  }
+  handleVerification = transactionId => {
+    this.props.verifyTransaction({ transactionId });
+  };
 
   handleSubmit = data => {
     this.props.submit(data);
@@ -57,7 +66,7 @@ class TransactionForm extends React.Component {
 
   render() {
     const { canSubmit, submitSuccess } = this.state;
-    const { alert, submitting, success, response } = this.props;
+    const { alert, submitting, response } = this.props;
 
     return (
       <div>
@@ -152,7 +161,10 @@ class TransactionForm extends React.Component {
             </Formsy>
           </div>
         ) : (
-          <Verifying response={response} VerifyTransaction={this.handleVerification} />
+          <Verifying
+            response={response}
+            VerifyTransaction={this.handleVerification}
+          />
         )}
       </div>
     );
@@ -176,7 +188,10 @@ const mapDispatchToProps = dispatch => {
   return {
     clearAlerts: bindActionCreators(alertActions.clear, dispatch),
     submit: bindActionCreators(transactionActions.performTransaction, dispatch),
-    verifyTransaction: bindActionCreators(verifyTransactionActions.verifyTransaction, dispatch)
+    verifyTransaction: bindActionCreators(
+      verifyTransactionActions.verifyTransaction,
+      dispatch
+    )
   };
 };
 const Transaction = connect(mapStateToProps, mapDispatchToProps)(

@@ -1,7 +1,7 @@
 import { verifyTransactionConstants } from "../_constants";
 import { verifyTransactionService } from "../_services";
 import { alertActions } from "./";
-//import { history } from "../_helpers";
+import { history } from "../_helpers";
 
 export const verifyTransactionActions = {
   verifyTransaction
@@ -15,11 +15,12 @@ function verifyTransaction(payload) {
       response => {
         dispatch(success(response));
         dispatch(alertActions.success('Transaction is Valid'));
-        //history.push("/confirmation");
+        history.push("/verification-status");
       },
       error => {
         dispatch(failure(error));
         dispatch(alertActions.error(error.message || error));
+        history.push("/verification-status");
       }
     );
   };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Container } from "reactstrap";
+import { Row, Col, Container, Alert } from "reactstrap";
 import { Spinner } from "../_Shared";
 import MaterialIcon from "material-icons-react";
 
@@ -7,7 +7,7 @@ class Verifying extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       this.props.VerifyTransaction(this.props.response.transactionId);
-    }, 20000);
+    }, 100000);
   }
   render() {
     const { response } = this.props;
@@ -24,6 +24,7 @@ class Verifying extends React.Component {
               <MaterialIcon icon="record_voice_over" size="90" color="#eee" />
             </p>
             <p>Please allow a few minutes for verification</p>
+            <Alert className='alert-info'>Kindly answer your phone and follow the voice prompt</Alert>
           </Col>
         </Row>
       </Container>
