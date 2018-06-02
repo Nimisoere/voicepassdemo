@@ -7,7 +7,7 @@ class Verifying extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       this.props.VerifyTransaction(this.props.response.transactionId);
-    }, 100000);
+    }, 40000);
   }
   render() {
     const { response } = this.props;
