@@ -23,7 +23,7 @@ class Verifying extends React.Component {
             <p>
               <MaterialIcon icon="record_voice_over" size="90" color="#eee" />
             </p>
-            <p>Please allow a few minutes for verification</p>
+            <p>Please allow a few seconds for verification</p>
             <Alert className='alert-info'>Kindly answer your phone and follow the voice prompt</Alert>
           </Col>
         </Row>
