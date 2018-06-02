@@ -15,7 +15,7 @@ class VerifyStatusConfirmation extends React.Component {
               <p>
                 <MaterialIcon icon="done_all" size="90" color="green" />
               </p>
-              <h4 className="text-success">{alert.message}</h4>{" "}
+              <h4 className="text-success">Transaction Successful</h4>{" "}
               <div>
                 <p>
                   <strong>Transaction ID:</strong> {response.transactionId}
@@ -56,7 +56,7 @@ class VerifyStatusConfirmation extends React.Component {
               <p>
                 <MaterialIcon icon="error" size="90" color="red" />
               </p>
-              <h4 className="text-danger">Verification Error</h4>{" "}
+              <h4 className="text-danger">Transaction Failed</h4>{" "}
               <Alert className='alert-danger'>{error.message}</Alert>
             </Col>
           </Row>
