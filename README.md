@@ -1,4 +1,4 @@
-Voice Pass (My Voice is my password) [Demo](https://voicepass.herokuapp.com/).
+Voice Pass (My Voice is my password) [Demo](https://voicepassdemo.herokuapp.com/).
 
 Voice Authentication Managements
 
